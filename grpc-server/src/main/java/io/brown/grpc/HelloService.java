@@ -7,9 +7,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Service
 public class HelloService {
 
-    private AtomicInteger ID_GENERATOR = new AtomicInteger();
+    private static final AtomicInteger ID_GENERATOR = new AtomicInteger();
 
     public String hello(String name) {
-        return String.format("Hello %s [%s]", name, ID_GENERATOR.getAndIncrement());
+        return String.format("Hello %s [%s]", name, ID_GENERATOR.incrementAndGet());
     }
 }
