@@ -6,3 +6,9 @@ grpc:
     greeting-service:
       address: static://localhost:9090
       negotiationType: PLAINTEXT
+
+rest:
+  greeting-service:
+    endpoint: http://localhost:8088
+    api:
+      greeting: api/greeting

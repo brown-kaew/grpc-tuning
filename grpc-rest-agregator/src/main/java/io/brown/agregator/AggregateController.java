@@ -15,19 +15,34 @@ import org.springframework.web.bind.annotation.RestController;
 public class AggregateController {
 
     private final GreetingGrpcClient greetingGrpcClient;
+    private final GreetingRestClient greetingRestClient;
 
     @GetMapping("grpc/greeting")
-    public String greeting() {
-        log.info("grpc/greeting");
+    public String grpcGreeting() {
         return greetingGrpcClient.hello(RandomStringUtils.randomAlphabetic(10));
     }
 
     @GetMapping("grpc/greeting/{times}")
-    public String greeting(@PathVariable int times) {
-        log.info("grpc/greeting/{}", times);
+    public String grpcGreeting(@PathVariable int times) {
         int i = 0;
         while (i < times) {
             greetingGrpcClient.hello(RandomStringUtils.randomAlphabetic(10));
+            i++;
+        }
+        return String.format("Done %s times", times);
+    }
+
+
+    @GetMapping("rest/greeting")
+    public String restGreeting() {
+        return greetingRestClient.hello(RandomStringUtils.randomAlphabetic(10));
+    }
+
+    @GetMapping("rest/greeting/{times}")
+    public String restGreeting(@PathVariable int times) {
+        int i = 0;
+        while (i < times) {
+            greetingRestClient.hello(RandomStringUtils.randomAlphabetic(10));
             i++;
         }
         return String.format("Done %s times", times);
