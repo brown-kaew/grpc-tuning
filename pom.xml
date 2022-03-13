@@ -93,6 +93,7 @@
 		<module>interface-proto</module>
 		<module>grpc-server</module>
         <module>rest-server</module>
+        <module>grpc-rest-agregator-webflux</module>
     </modules>
 
 </project>

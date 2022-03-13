@@ -24,12 +24,13 @@ public class AggregateController {
 
     @GetMapping("grpc/greeting/{times}")
     public String grpcGreeting(@PathVariable int times) {
+        StringBuilder massages = new StringBuilder();
         int i = 0;
         while (i < times) {
-            greetingGrpcClient.hello(RandomStringUtils.randomAlphabetic(10));
+            massages.append(greetingGrpcClient.hello(RandomStringUtils.randomAlphabetic(10)));
             i++;
         }
-        return String.format("Done %s times", times);
+        return massages.toString();
     }
 
 
@@ -40,12 +41,13 @@ public class AggregateController {
 
     @GetMapping("rest/greeting/{times}")
     public String restGreeting(@PathVariable int times) {
+        StringBuilder massages = new StringBuilder();
         int i = 0;
         while (i < times) {
-            greetingRestClient.hello(RandomStringUtils.randomAlphabetic(10));
+            massages.append(greetingRestClient.hello(RandomStringUtils.randomAlphabetic(10)));
             i++;
         }
-        return String.format("Done %s times", times);
+        return massages.toString();
     }
 
 }

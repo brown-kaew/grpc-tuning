@@ -1,14 +1,12 @@
 package io.brown.agregator;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@Slf4j
 @Service
 @RequiredArgsConstructor
 public class GreetingRestClient {
@@ -22,8 +20,6 @@ public class GreetingRestClient {
         UriComponents builder = UriComponentsBuilder.fromPath(greetingPath)
                 .queryParam("name", name)
                 .build();
-        String message = greetingRestTemplate.getForObject(builder.toUriString(), String.class);
-        log.info(message);
-        return message;
+        return greetingRestTemplate.getForObject(builder.toUriString(), String.class);
     }
 }

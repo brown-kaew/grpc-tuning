@@ -1,4 +1,4 @@
-package io.brown.agregator;
+package io.brown.agregatorwebflux;
 
 import io.brown.GreetingServiceGrpc;
 import io.brown.HelloReply;
